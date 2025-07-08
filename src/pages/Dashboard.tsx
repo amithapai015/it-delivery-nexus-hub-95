@@ -4,11 +4,13 @@ import { KPICardEnhanced } from "@/components/dashboard/KPICardEnhanced";
 import { EscalationCard } from "@/components/dashboard/EscalationCard";
 import { ResourceOverviewCard } from "@/components/dashboard/ResourceOverviewCard";
 import { ProjectHealthTable } from "@/components/dashboard/ProjectHealthTable";
+import { CreateEscalationDialog } from "@/components/dashboard/CreateEscalationDialog";
 import { useToast } from "@/hooks/use-toast";
 import dashboardData from "@/data/dashboardData.json";
 
 const Dashboard = () => {
   const [data, setData] = useState<any>(null);
+  const [createEscalationOpen, setCreateEscalationOpen] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -29,6 +31,10 @@ const Dashboard = () => {
       description: `Deleting escalation with ID: ${id}`,
       variant: "destructive",
     });
+  };
+
+  const handleCreateEscalation = () => {
+    setCreateEscalationOpen(true);
   };
 
   if (!data) {
@@ -74,8 +80,14 @@ const Dashboard = () => {
           escalations={data.escalations}
           onEdit={handleEditEscalation}
           onDelete={handleDeleteEscalation}
+          onCreateNew={handleCreateEscalation}
         />
       </div>
+      
+      <CreateEscalationDialog 
+        open={createEscalationOpen} 
+        onOpenChange={setCreateEscalationOpen} 
+      />
     </div>
   );
 };

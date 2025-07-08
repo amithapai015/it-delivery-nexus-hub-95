@@ -44,89 +44,66 @@ export const ResourceOverviewCard = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>👥 Resource Overview</CardTitle>
+        <CardTitle>Resource Overview</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
-        {/* Key Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="text-center p-4 bg-gray-50 rounded-lg">
-            <div className="text-3xl font-bold text-blue-600">{totalEngineers}</div>
-            <div className="text-sm text-gray-600">Total Engineers</div>
+        {/* Key Metrics - Horizontal Layout */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="text-center p-3 bg-muted/50 rounded-lg">
+            <div className="text-2xl font-bold text-primary">{totalEngineers}</div>
+            <div className="text-xs text-muted-foreground">Total Engineers</div>
           </div>
-          <div className="text-center p-4 bg-gray-50 rounded-lg">
-            <div className="text-3xl font-bold text-orange-600">{benchPercentage}%</div>
-            <div className="text-sm text-gray-600">People on Bench</div>
+          <div className="text-center p-3 bg-muted/50 rounded-lg">
+            <div className="text-2xl font-bold text-orange-600">{benchPercentage}%</div>
+            <div className="text-xs text-muted-foreground">Bench %</div>
           </div>
-          <div className="text-center p-4 bg-gray-50 rounded-lg">
-            <div className="text-3xl font-bold text-green-600">{allocationPercentage}%</div>
-            <div className="text-sm text-gray-600">Allocation %</div>
+          <div className="text-center p-3 bg-muted/50 rounded-lg">
+            <div className="text-2xl font-bold text-green-600">{allocationPercentage}%</div>
+            <div className="text-xs text-muted-foreground">Allocation %</div>
+          </div>
+          <div className="text-center p-3 bg-muted/50 rounded-lg">
+            <div className="text-xl font-bold text-primary">{roleDistribution.length}</div>
+            <div className="text-xs text-muted-foreground">Role Types</div>
+          </div>
+          <div className="text-center p-3 bg-muted/50 rounded-lg">
+            <div className="text-xl font-bold text-primary">{experienceDistribution.length}</div>
+            <div className="text-xs text-muted-foreground">Exp. Levels</div>
+          </div>
+          <div className="text-center p-3 bg-muted/50 rounded-lg">
+            <div className="text-2xl font-bold text-green-600">{billableRatio.billablePercentage}%</div>
+            <div className="text-xs text-muted-foreground">Billable</div>
           </div>
         </div>
 
-        {/* Role Distribution */}
+        {/* Role Distribution - Compact */}
         <div>
-          <h4 className="font-medium text-gray-900 mb-3">Role Distribution</h4>
-          <div className="space-y-3">
+          <h4 className="font-medium text-foreground mb-3">Role Distribution</h4>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {roleDistribution.map((role) => (
-              <div key={role.role} className="flex items-center justify-between">
-                <div className="flex items-center gap-3 flex-1">
-                  <span className="text-sm font-medium w-20">{role.role}</span>
-                  <div className="flex-1 bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-blue-500 h-2 rounded-full" 
-                      style={{ width: `${role.percentage}%` }}
-                    />
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 ml-4">
-                  <span className="text-sm text-gray-600">{role.count}</span>
-                  <span className="text-xs text-gray-500">({role.percentage}%)</span>
+              <div key={role.role} className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                <span className="text-sm font-medium">{role.role}</span>
+                <div className="text-right">
+                  <div className="text-sm font-bold">{role.count}</div>
+                  <div className="text-xs text-muted-foreground">{role.percentage}%</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Experience Distribution */}
+        {/* Experience Distribution - Compact */}
         <div>
-          <h4 className="font-medium text-gray-900 mb-3">Experience Distribution</h4>
-          <div className="space-y-3">
+          <h4 className="font-medium text-foreground mb-3">Experience Distribution</h4>
+          <div className="grid grid-cols-3 gap-3">
             {experienceDistribution.map((exp) => (
-              <div key={exp.level} className="flex items-center justify-between">
-                <div className="flex items-center gap-3 flex-1">
-                  <span className="text-sm font-medium w-20">{exp.level}</span>
-                  <div className="flex-1 bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-purple-500 h-2 rounded-full" 
-                      style={{ width: `${exp.percentage}%` }}
-                    />
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 ml-4">
-                  <span className="text-sm text-gray-600">{exp.count}</span>
-                  <span className="text-xs text-gray-500">({exp.percentage}%)</span>
+              <div key={exp.level} className="flex items-center justify-between p-2 bg-muted/30 rounded">
+                <span className="text-sm font-medium">{exp.level}</span>
+                <div className="text-right">
+                  <div className="text-sm font-bold">{exp.count}</div>
+                  <div className="text-xs text-muted-foreground">{exp.percentage}%</div>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Billable vs Non-Billable */}
-        <div>
-          <h4 className="font-medium text-gray-900 mb-3">Billable vs Non-Billable Ratio</h4>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Billable Resources</span>
-            <span className="text-sm font-medium">{billableRatio.billablePercentage}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-3">
-            <div 
-              className={`h-3 rounded-full ${getProgressBarColor(billableRatio.billablePercentage)}`}
-              style={{ width: `${billableRatio.billablePercentage}%` }}
-            />
-          </div>
-          <div className="flex justify-between text-xs text-gray-500 mt-1">
-            <span>Billable: {billableRatio.billable}</span>
-            <span>Non-Billable: {billableRatio.nonBillable}</span>
           </div>
         </div>
       </CardContent>

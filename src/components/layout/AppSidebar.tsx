@@ -3,7 +3,8 @@ import {
   LayoutDashboard, 
   Users, 
   Database, 
-  Settings as SettingsIcon 
+  Settings as SettingsIcon,
+  AlertTriangle
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import {
@@ -20,6 +21,7 @@ import {
 
 const mainNavItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
+  { title: "Escalations", url: "/escalations", icon: AlertTriangle },
   { title: "Resource Management", url: "/resource-management", icon: Users },
   { title: "Financial Department", url: "/financial-department", icon: Database },
   { title: "Settings", url: "/settings", icon: SettingsIcon },
@@ -37,7 +39,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-lg font-semibold px-4 py-3">
-            IT Delivery Dashboard
+            {!collapsed ? "IT Delivery Dashboard" : "ITD"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

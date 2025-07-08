@@ -72,32 +72,38 @@
     {
       "id": "1",
       "title": "API Performance Issues",
-      "client": "TechCorp Industries",
-      "engineer": "Alex Rodriguez",
-      "date": "6/1/2024",
-      "status": "In Progress",
+      "customer": "TechCorp Industries",
+      "project": "Project Alpha",
+      "owner": "Alex Rodriguez",
       "priority": "High",
-      "priorityColor": "red"
+      "status": "In Progress",
+      "dateRaised": "6/1/2024",
+      "resolutionETA": "6/8/2024",
+      "description": "Critical performance degradation in API response times affecting customer operations."
     },
     {
       "id": "2",
       "title": "Budget Overrun Discussion",
-      "client": "InnovateCorp",
-      "engineer": "Sarah Johnson",
-      "date": "5/28/2024",
-      "status": "Resolved",
+      "customer": "InnovateCorp",
+      "project": "Beta Platform",
+      "owner": "Sarah Johnson",
       "priority": "Medium",
-      "priorityColor": "green"
+      "status": "Resolved",
+      "dateRaised": "5/28/2024",
+      "resolutionETA": "6/5/2024",
+      "description": "Budget overrun discussion required with client to align on additional scope."
     },
     {
       "id": "3",
       "title": "Resource Allocation Conflict",
-      "client": "GlobalTech",
-      "engineer": "Mike Chen",
-      "date": "6/3/2024",
-      "status": "Open",
+      "customer": "GlobalTech",
+      "project": "Customer Portal",
+      "owner": "Mike Chen",
       "priority": "Critical",
-      "priorityColor": "orange"
+      "status": "Open",
+      "dateRaised": "6/3/2024",
+      "resolutionETA": "6/10/2024",
+      "description": "Conflict in resource allocation between multiple high-priority projects."
     }
   ],
   "projectHealth": [

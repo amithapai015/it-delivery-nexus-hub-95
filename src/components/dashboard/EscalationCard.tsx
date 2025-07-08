@@ -6,21 +6,24 @@ import { Link } from "react-router-dom";
 interface Escalation {
   id: string;
   title: string;
-  client: string;
-  engineer: string;
-  date: string;
-  status: string;
+  customer: string;
+  project: string;
+  owner: string;
   priority: string;
-  priorityColor: string;
+  status: string;
+  dateRaised: string;
+  resolutionETA: string;
+  description?: string;
 }
 
 interface EscalationCardProps {
   escalations: Escalation[];
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
+  onCreateNew: () => void;
 }
 
-export const EscalationCard = ({ escalations, onEdit, onDelete }: EscalationCardProps) => {
+export const EscalationCard = ({ escalations, onEdit, onDelete, onCreateNew }: EscalationCardProps) => {
   const getPriorityBorderColor = (color: string) => {
     switch (color) {
       case 'red': return 'border-red-500';
@@ -47,10 +50,10 @@ export const EscalationCard = ({ escalations, onEdit, onDelete }: EscalationCard
         </CardTitle>
         <div className="flex items-center gap-2">
           <span className="text-sm text-muted-foreground px-2 py-1 bg-muted rounded-full">
-            3 Total
+            {escalations.length} Total
           </span>
-          <Button size="sm" className="bg-teal-600 hover:bg-teal-700">
-            Create
+          <Button size="sm" onClick={onCreateNew} className="bg-primary hover:bg-primary/90">
+            Create New Escalation
           </Button>
         </div>
       </CardHeader>
@@ -58,21 +61,21 @@ export const EscalationCard = ({ escalations, onEdit, onDelete }: EscalationCard
         {escalations.map((escalation) => (
           <div 
             key={escalation.id}
-            className={`border-l-4 ${getPriorityBorderColor(escalation.priorityColor)} p-4 bg-gray-50 rounded-r-lg`}
+            className="border-l-4 border-l-primary p-4 bg-muted/30 rounded-r-lg"
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <h4 className="text-sm font-medium text-gray-900">{escalation.title}</h4>
-                  <span className={`px-2 py-1 text-xs font-medium rounded-full border ${getPriorityBadgeColor(escalation.priority)}`}>
-                    {escalation.priority} Priority
+                  <h4 className="text-sm font-medium text-foreground">{escalation.title}</h4>
+                  <span className={`px-2 py-1 text-xs font-medium rounded-full ${getPriorityBadgeColor(escalation.priority)}`}>
+                    {escalation.priority}
                   </span>
                 </div>
-                <div className="text-xs text-gray-600 space-y-1">
-                  <div>Client: {escalation.client}</div>
-                  <div>Engineer: {escalation.engineer}</div>
+                <div className="text-xs text-muted-foreground space-y-1">
+                  <div>Customer: {escalation.customer}</div>
+                  <div>Owner: {escalation.owner}</div>
                   <div className="flex items-center gap-4">
-                    <span>ETA {escalation.date}</span>
+                    <span>ETA: {escalation.resolutionETA}</span>
                   </div>
                 </div>
               </div>
@@ -81,7 +84,7 @@ export const EscalationCard = ({ escalations, onEdit, onDelete }: EscalationCard
                   variant="ghost"
                   size="sm"
                   onClick={() => onEdit(escalation.id)}
-                  className="h-8 w-8 p-0 hover:bg-blue-100 hover:text-blue-600"
+                  className="h-8 w-8 p-0 hover:bg-primary/10 hover:text-primary"
                 >
                   <Edit className="h-4 w-4" />
                 </Button>
@@ -89,7 +92,7 @@ export const EscalationCard = ({ escalations, onEdit, onDelete }: EscalationCard
                   variant="ghost"
                   size="sm"
                   onClick={() => onDelete(escalation.id)}
-                  className="h-8 w-8 p-0 hover:bg-red-100 hover:text-red-600"
+                  className="h-8 w-8 p-0 hover:bg-destructive/10 hover:text-destructive"
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>
@@ -99,7 +102,7 @@ export const EscalationCard = ({ escalations, onEdit, onDelete }: EscalationCard
         ))}
         <div className="pt-4">
           <Link to="/escalations">
-            <Button className="w-full">
+            <Button className="w-full" variant="outline">
               Manage Escalations
             </Button>
           </Link>
