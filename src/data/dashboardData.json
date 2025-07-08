@@ -1,0 +1,138 @@
+{
+  "kpis": [
+    {
+      "id": "active-projects",
+      "title": "Active Projects",
+      "value": 12,
+      "icon": "Users",
+      "iconColor": "text-blue-600"
+    },
+    {
+      "id": "on-track",
+      "title": "On Track",
+      "value": 9,
+      "subtitle": "75%",
+      "icon": "CheckCircle",
+      "iconColor": "text-green-600"
+    },
+    {
+      "id": "at-risk",
+      "title": "At Risk",
+      "value": 3,
+      "subtitle": "25%",
+      "icon": "AlertTriangle",
+      "iconColor": "text-orange-600"
+    },
+    {
+      "id": "completed-mtd",
+      "title": "Completed MTD",
+      "value": 4,
+      "icon": "Calendar",
+      "iconColor": "text-purple-600"
+    },
+    {
+      "id": "escalations",
+      "title": "Escalations (30d)",
+      "value": 2,
+      "icon": "AlertTriangle",
+      "iconColor": "text-red-600"
+    },
+    {
+      "id": "health-score",
+      "title": "Avg Health Score",
+      "value": 82,
+      "subtitle": "/100",
+      "icon": "LayoutDashboard",
+      "iconColor": "text-blue-600"
+    }
+  ],
+  "resourceOverview": {
+    "totalEngineers": 48,
+    "benchPercentage": 16.2,
+    "allocationPercentage": 85,
+    "roleDistribution": [
+      { "role": "Frontend", "count": 18, "percentage": 37.5 },
+      { "role": "Backend", "count": 15, "percentage": 31.2 },
+      { "role": "QA", "count": 8, "percentage": 16.7 },
+      { "role": "DevOps", "count": 4, "percentage": 8.3 },
+      { "role": "UI/UX", "count": 3, "percentage": 6.3 }
+    ],
+    "experienceDistribution": [
+      { "level": "Junior", "count": 12, "percentage": 25 },
+      { "level": "Mid-Level", "count": 22, "percentage": 45.8 },
+      { "level": "Senior", "count": 14, "percentage": 29.2 }
+    ],
+    "billableRatio": {
+      "billable": 89,
+      "nonBillable": 11,
+      "billablePercentage": 89
+    }
+  },
+  "escalations": [
+    {
+      "id": "1",
+      "title": "API Performance Issues",
+      "client": "TechCorp Industries",
+      "engineer": "Alex Rodriguez",
+      "date": "6/1/2024",
+      "status": "In Progress",
+      "priority": "High",
+      "priorityColor": "red"
+    },
+    {
+      "id": "2",
+      "title": "Budget Overrun Discussion",
+      "client": "InnovateCorp",
+      "engineer": "Sarah Johnson",
+      "date": "5/28/2024",
+      "status": "Resolved",
+      "priority": "Medium",
+      "priorityColor": "green"
+    },
+    {
+      "id": "3",
+      "title": "Resource Allocation Conflict",
+      "client": "GlobalTech",
+      "engineer": "Mike Chen",
+      "date": "6/3/2024",
+      "status": "Open",
+      "priority": "Critical",
+      "priorityColor": "orange"
+    }
+  ],
+  "projectHealth": [
+    {
+      "id": "1",
+      "projectName": "Project Alpha",
+      "customer": "TechCorp Industries",
+      "healthStatus": "Green",
+      "currentStage": "Development",
+      "onTimePercentage": 92,
+      "endDate": "6/30/2024",
+      "riskLevel": "Low",
+      "dmPo": "Sarah Johnson"
+    },
+    {
+      "id": "2",
+      "projectName": "Beta Platform",
+      "customer": "InnovateCorp",
+      "healthStatus": "Amber",
+      "currentStage": "UAT",
+      "onTimePercentage": 78,
+      "endDate": "5/15/2024",
+      "riskLevel": "Medium",
+      "dmPo": "Mike Chen"
+    },
+    {
+      "id": "3",
+      "projectName": "Customer Portal",
+      "customer": "GlobalTech",
+      "healthStatus": "Green",
+      "currentStage": "Testing",
+      "onTimePercentage": 95,
+      "endDate": "7/20/2024",
+      "riskLevel": "Low",
+      "dmPo": "Alex Rodriguez"
+    }
+  ]
+}
